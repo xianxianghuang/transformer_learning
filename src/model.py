@@ -133,8 +133,9 @@ class CBOW(nn.Module):
         - 这里用的是简化的均匀分布初始化
         """
         # 计算初始化范围
-        # embedding_dim=300 时，init_range = 0.5/300 ≈ 0.0017
-        init_range = 0.5 / self.embedding_dim
+        # 使用更大的初始化范围以确保梯度有效传播
+        # 经验值：0.1 对于大多数情况效果良好
+        init_range = 0.1
 
         # 初始化目标词嵌入层的权重
         # .weight.data 访问嵌入层的权重参数

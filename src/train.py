@@ -108,14 +108,16 @@ def parse_args():
     # --learning_rate: 学习率
     # 决定参数更新的步长
     # 学习率太大可能导致不收敛，太小则训练太慢
-    parser.add_argument('--learning_rate', type=float, default=0.025,
-                       help='Learning rate')
+    # 注意：CBOW模型推荐使用较大的学习率(如10.0)以确保有效训练
+    parser.add_argument('--learning_rate', type=float, default=10.0,
+                       help='Learning rate (recommended: 10.0 for CBOW)')
 
     # --epochs: 训练轮数
     # 完整遍历训练数据的次数
     # 更多epoch可以让模型学到更多，但可能过拟合
-    parser.add_argument('--epochs', type=int, default=20,
-                       help='Number of training epochs')
+    # 推荐100个epoch以获得较好的词向量
+    parser.add_argument('--epochs', type=int, default=100,
+                       help='Number of training epochs (recommended: 100)')
 
     # --save_dir: 模型保存目录
     parser.add_argument('--save_dir', type=str, default='checkpoints',
