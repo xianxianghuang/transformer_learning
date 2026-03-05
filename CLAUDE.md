@@ -35,17 +35,17 @@ pip install -r requirements.txt
 ## Common Commands
 
 ```bash
-# Train model
+# Train model (with recommended parameters)
 cd src && python train.py
 
-# Train with custom parameters
-python train.py --embedding_dim 300 --epochs 20 --batch_size 512
+# Train with PTB + WikiText-2
+python train.py --data_path "data/ptb.train.txt,data/ptb.valid.txt,data/wiki.train.tokens,data/wiki.valid.tokens"
 
 # Evaluate (similarity & analogy)
-python evaluate.py
+python evaluate.py --model_path ../checkpoints/cbow_final.pt
 
-# Visualize embeddings with t-SNE
-python evaluate.py --visualize --visualize_words king,queen,man,woman
+# Comprehensive evaluation (similarity, analogy, clustering, visualization)
+python comprehensive_eval.py --model_path ../checkpoints/cbow_final.pt --visualize
 ```
 
 ## Key Hyperparameters
@@ -54,8 +54,8 @@ python evaluate.py --visualize --visualize_words king,queen,man,woman
 |-----------|---------|-------------|
 | `--embedding_dim` | 300 | Word vector dimension |
 | `--window_size` | 5 | Context window radius |
-| `--learning_rate` | 0.025 | Learning rate |
-| `--epochs` | 20 | Training epochs |
+| `--learning_rate` | **10.0** | Learning rate (important: use large value) |
+| `--epochs` | **100** | Training epochs (recommended: 100) |
 | `--batch_size` | 512 | Batch size |
 | `--negative_samples` | 5 | Negative sampling count |
 | `--min_count` | 5 | Minimum word frequency |

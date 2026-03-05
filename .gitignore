@@ -20,9 +20,6 @@ wheels/
 .installed.cfg
 *.egg
 
-# Data files
-data/*.txt
-
 # Checkpoints
 checkpoints/
 *.pt

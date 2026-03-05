@@ -106,6 +106,22 @@ python evaluate.py --model_path checkpoints/cbow_final.pt
 python evaluate.py --visualize --visualize_words king,queen,man,woman,computer,money
 ```
 
+### 全面评估
+
+使用综合评估脚本进行更全面的评估（词相似度、词类比、聚类分析、可视化）：
+
+```bash
+cd src
+python comprehensive_eval.py --model_path ../checkpoints/cbow_final.pt --visualize
+```
+
+输出包括：
+- 词相似度评估
+- 词类比评估
+- 特定语义关系评估（如金融领域、数值单位、动作时态）
+- 聚类分析
+- t-SNE和PCA可视化
+
 ## 模型架构
 
 ```
@@ -168,9 +184,11 @@ shares   → revenue(0.63), rose(0.62), million(0.61)
 | `src/model.py` | CBOW模型定义 |
 | `src/train.py` | 训练脚本 |
 | `src/evaluate.py` | 评估脚本 |
+| `src/comprehensive_eval.py` | 综合评估脚本 |
 | `src/utils.py` | 工具函数 |
 | `data/ptb.txt` | 训练数据 |
 | `checkpoints/` | 模型保存目录 |
+| `evaluation_results/` | 评估可视化结果 |
 
 ## 参考
 
